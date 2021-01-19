@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Conswole</title>
+  <style>
+    * {
+      font-family: 'Fira Code', 'Courier New', Courier, monospace;
+    }
+  </style>
+</head>
+<body>
+  <div id="app">
+    <pre><code v-html="lines"></code></pre>
+    <form v-on:submit="submit" v-on:submit.prevent>
+      <input v-model="input" type="text"/>
+    </form>
+  </div>
+  <script src="https://unpkg.com/vue@2.6.12/dist/vue.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
