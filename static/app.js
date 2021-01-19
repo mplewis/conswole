@@ -3,7 +3,7 @@ ws = new WebSocket("ws://localhost:8765");
 const app = new Vue({
   el: "#app",
   methods: {
-    submit(event) {
+    submit() {
       ws.send(this.input);
       this.input = "";
     },
