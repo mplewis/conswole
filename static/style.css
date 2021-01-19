@@ -1,3 +1,7 @@
+* {
+  box-sizing: border-box;
+}
+
 br {
   display: block;
 }
@@ -16,11 +20,16 @@ input {
   font-family: "Consolas", "Monaco", "Bitstream Vera Sans Mono", monospace;
 }
 
+.input {
+  width: 100%;
+  padding: 12px;
+}
+
 input {
-  margin: 12px;
+  width: 100%;
   border: 1px solid rgb(204, 204, 204);
-  padding: 4px;
   font-size: 15px;
+  padding: 8px 12px;
 }
 
 .inner,

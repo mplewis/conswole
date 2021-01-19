@@ -1,5 +1,5 @@
 import asyncio
-from console_server import console_server, TearItDown
+from console_server import console_server
 from static_server import static_server
 
 HOST = 'localhost'
