@@ -1,0 +1,38 @@
+br {
+  display: block;
+}
+
+div,
+input {
+  border-radius: 6px;
+}
+
+#app {
+  text-align: left;
+}
+
+.debugger,
+input {
+  font-family: "Consolas", "Monaco", "Bitstream Vera Sans Mono", monospace;
+}
+
+input {
+  margin: 12px;
+  border: 1px solid rgb(204, 204, 204);
+  padding: 4px;
+  font-size: 15px;
+}
+
+.inner,
+.frame {
+  padding: 8px;
+}
+
+.debugger {
+  height: 600px;
+}
+
+.console {
+  height: 100%;
+  overflow: scroll;
+}

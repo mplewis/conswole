@@ -1,6 +1,10 @@
 import websockets
 from werkzeug.debug.console import Console
 
+class TearItDown(Exception):
+    # TODO: This doesn't really work, but when we do this, we actually just want to gracefully stop the wss
+    pass
+
 async def wss(websocket, path):
     c = Console()
     while True:
@@ -10,8 +14,9 @@ async def wss(websocket, path):
             result = c.eval(cmd).replace('\n', '<br>')
             await websocket.send(result)
             print(f"> {result}")
-        except websockets.exceptions.ConnectionClosedError:
-            break
+        except (websockets.exceptions.ConnectionClosedError, websockets.exceptions.ConnectionClosedOK):
+            print('Disconnected')
+            raise TearItDown()
 
 
 def console_server(host, port):

@@ -18,8 +18,8 @@ const app = new Vue({
 
 ws.onmessage = (event) => {
   console.log(event);
-  app.lines += event.data + "\n";
+  app.lines += event.data + "<br>";
 };
 ws.onopen = () => {
-  ws.send("1 + 2 + 3 + 4");
+  ws.send("print('Hello world!')");
 };
