@@ -20,6 +20,11 @@ input {
   font-family: "Consolas", "Monaco", "Bitstream Vera Sans Mono", monospace;
 }
 
+.header {
+  margin-left: 12px;
+  margin-right: 12px;
+}
+
 .input {
   width: 100%;
   padding: 12px;
@@ -30,6 +35,10 @@ input {
   border: 1px solid rgb(204, 204, 204);
   font-size: 15px;
   padding: 8px 12px;
+}
+
+input:disabled {
+  background-color: rgba(255, 0, 0, 0.1);
 }
 
 .inner,

@@ -8,10 +8,14 @@ HTTP_PORT = 8888
 
 loop = asyncio.get_event_loop()
 
-loop.run_until_complete(console_server(HOST, WS_PORT))
-print(f'Listening for WS connections on ws://{HOST}:{WS_PORT}')
+def done():
+    print('Client disconnected. Shutting down.')
+    loop.stop()
 
 loop.run_until_complete(static_server(HOST, HTTP_PORT))
 print(f'Listening for HTTP connections on http://{HOST}:{HTTP_PORT}')
+
+loop.run_until_complete(console_server(HOST, WS_PORT, done))
+print(f'Listening for WS connections on ws://{HOST}:{WS_PORT}')
 
 loop.run_forever()

@@ -1,21 +1,24 @@
 import websockets
+from datetime import datetime
 from werkzeug.debug.console import Console
 
-def wss(stop):
-    async def s(websocket, path):
+def wss(done):
+    server_init = datetime.now()
+    async def s(ws, path):
         c = Console()
         try:
-            async for cmd in websocket:
+            uptime = datetime.now() - server_init
+            print('Client connected.')
+            await ws.send(f'CONSWOLE_SERVER_UPTIME:{uptime.total_seconds()}')
+            async for cmd in ws:
                 print(f"< {cmd.rstrip()}")
-                result = c.eval(cmd).replace('\n', '<br>')
-                await websocket.send(result)
+                raw = c.eval(cmd)
+                result = (raw + '\n').replace('\n', '<br>')
+                await ws.send(result)
                 print(f"> {result}")
         finally:
-            print('Disconnected')
-            stop()
+            done()
     return s
 
-def console_server(host, port):
-    def stop():
-        print('OK, stopped')
-    return websockets.serve(wss(stop), host, port)
+def console_server(host, port, done):
+    return websockets.serve(wss(done), host, port)

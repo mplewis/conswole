@@ -9,11 +9,10 @@
   </head>
   <body>
     <div id="app">
-      <h1>Conswole</h1>
-      <!-- <div class="output"> -->
-      <!-- <pre><code v-html="lines"></code></pre> -->
-      <!-- <pre v-html="lines"></pre> -->
-      <!-- </div> -->
+      <div class="header">
+        <h1>Conswole</h1>
+        <p v-if="connected">{{remaining}}</p>
+      </div>
       <div class="debugger">
         <div class="console">
           <div class="inner" v-html="lines"></div>
@@ -21,7 +20,7 @@
       </div>
       <div class="input">
         <form v-on:submit="submit" v-on:submit.prevent>
-          <input v-model="input" type="text" />
+          <input v-model="input" type="text" :disabled="!connected" />
         </form>
       </div>
     </div>
